@@ -1,6 +1,54 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Hamburger</h1>
-    <p class="lead">Make a burger.  Eat a burger.  Repeat</p>
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Hamburger</h1>
+      <p class="lead">Make a burger. Eat a burger. Repeat</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>Burgers</h3>
+    </div>
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <h4>Burgers Ready to Eat</h4>
+          <div>
+              {{#each burgers}}
+                <p>
+                  {{this.id}}. {{this.burger_name}}
+
+                  <button data-planid="{{this.id}}" class="devour">Devour!</button>
+                </p>
+              {{/each}}
+          </div>
+        </div>
+        <div class="col-6">
+          <h3>Burgers Eaten</h3>
+          <div>
+            <ul>
+              {{#each Burgers}}
+              {{#unless devoured}}
+              {{/unless}}
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><br>
+
+  <div class="card">
+    <div class="card-header">
+      Make a Burger
+    </div>
+    <div class="card-body">
+      <form>
+        <label for="burgerInputTitle">What Burger Would You Like To Make?</label>
+        <textarea type="text" class="form-control" id="burgerInput" rows="3"></textarea><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
   </div>
 </div>
