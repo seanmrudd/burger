@@ -15,24 +15,25 @@
         <div class="col-6">
           <h4>Burgers Ready to Eat</h4>
           <div>
-              {{#each burgers}}
-                <p>
-                  {{this.id}}. {{this.burger_name}}
+            {{#each burgers}}
+            {{#unless devoured}}
+            <p>
+              {{this.id}}. {{this.burger_name}}
 
-                  <button data-planid="{{this.id}}" class="devour">Devour!</button>
-                </p>
-              {{/each}}
+              <button data-id="{{this.id}}" class="devour">Devour!</button>
+            </p>
+            {{/unless}}
+            {{/each}}
           </div>
         </div>
         <div class="col-6">
           <h3>Burgers Eaten</h3>
           <div>
-            <ul>
-              {{#each Burgers}}
-              {{#unless devoured}}
-              {{/unless}}
-              {{/each}}
-            </ul>
+            {{#each burgers}}
+            {{#if devoured}}
+            {{this.id}}. {{this.burger_name}}
+            {{/if}}
+            {{/each}}
           </div>
         </div>
       </div>
@@ -44,7 +45,7 @@
       Make a Burger
     </div>
     <div class="card-body">
-      <form>
+      <form class="makeBurger">
         <label for="burgerInputTitle">What Burger Would You Like To Make?</label>
         <textarea type="text" class="form-control" id="burgerInput" rows="3"></textarea><br>
         <button type="submit" class="btn btn-primary">Submit</button>

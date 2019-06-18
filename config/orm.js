@@ -36,39 +36,25 @@ function printQuestionMarks(num) {
       });
     },
     create: function(table, cols, vals, cb) {
-      var queryString = "INSERT INTO " + table;
-  
-      queryString += " (";
-      queryString += cols.toString();
-      queryString += ") ";
-      queryString += "VALUES (";
-      queryString += printQuestionMarks(vals.length);
-      queryString += ") ";
+      var queryString = "INSERT INTO burgers (burger) VALUES (?)";
   
       console.log(queryString);
   
-      connection.query(queryString, vals, function(err, result) {
+      connection.query(queryString, req.body.burgerName, function(err, result) {
         if (err) {
-          throw err;
+          return res.status(500).end();
         }
-  
         cb(result);
       });
     },
     update: function(table, objColVals, condition, cb) {
-      var queryString = "UPDATE " + table;
-  
-      queryString += " SET ";
-      queryString += objToSql(objColVals);
-      queryString += " WHERE ";
-      queryString += condition;
+      var queryString = "UPDATE burgers SET devour = true WHERE id = ?"
   
       console.log(queryString);
-      connection.query(queryString, function(err, result) {
+      connection.query(queryString, req.params.id, function(err, result) {
         if (err) {
-          throw err;
+          return res.status(500).end();
         }
-  
         cb(result);
       });
     },
