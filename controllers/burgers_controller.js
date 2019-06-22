@@ -14,7 +14,7 @@ router.get("/", function(request, response) {
 
 router.post("/api/burgers", function(request, response) {
     Burger.create([
-        "burger_name",
+        "burger_name", 
     ], [
         request.body.burger_name
     ], function(result) {
