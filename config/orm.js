@@ -1,4 +1,4 @@
-var connection = require("./connection");
+var connection = require("../config/connection");
 
 var orm = {
   selectAll: function (tableInput, cb) {
@@ -22,14 +22,15 @@ var orm = {
       cb(result);
     });
   },
-  updateOne: function (objColVals, condition, cb) {
-    var queryString = "UPDATE burgers SET devoured = ? WHERE id = ?"
+  updateOne: function (cb) {
+    var queryString = "UPDATE burgers SET devoured = true WHERE id = ?"
 
     console.log(queryString);
-    connection.query(queryString, [true, req.params.id],
-      function (err, result) {
+    var id = req.params.id;
+
+    connection.query(queryString, id, function (err, result) {
       if (err) {
-        return res.status(500).end();
+        return result.status(500).end();
       }
       cb(result);
     });

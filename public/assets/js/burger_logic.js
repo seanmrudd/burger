@@ -2,11 +2,14 @@ $(function () {
     $(".devour").on("click", function () {
 
         var id = $(this).data("id");
+        var eaten = {
+            devoured: true
+        }
         console.log(id)
 
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
-            data: devoured
+            devoured: eaten
         }).then(
             function () {
                 console.log("burger ", devoured);
@@ -19,8 +22,8 @@ $(function () {
         event.preventDefault();
 
         var newBurger = {
-            burger_name = $("#burger_name").val().trim(),
-            devoured = false
+            burger_name: $("#burger_name").val().trim(),
+            devoured: false
         };
 
         console.log(newBurger);
@@ -36,3 +39,5 @@ $(function () {
         );
     });
 });
+
+console.log("test")
