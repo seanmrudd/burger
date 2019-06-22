@@ -18,12 +18,11 @@ $(function () {
         )
     });
 
-    $(".makeBurger").on("submit", function(event) {
+    $(".create-burger").on("submit", function (event) {
         event.preventDefault();
 
         var newBurger = {
-            burger_name: $("#burger_name").val().trim(),
-            devoured: false
+            name: $("#burger").val().trim(),
         };
 
         console.log(newBurger);
@@ -32,12 +31,10 @@ $(function () {
             type: "POST",
             data: newBurger
         }).then(
-            function() {
+            function () {
                 console.log("Made a new burger");
                 location.reload();
             }
         );
     });
 });
-
-console.log("test")

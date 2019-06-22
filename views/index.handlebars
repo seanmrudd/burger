@@ -31,7 +31,9 @@
           <div>
             {{#each burgers}}
             {{#if devoured}}
-            {{this.id}}. {{this.burger_name}}
+            <p>
+              {{this.id}}. {{this.burger_name}}
+            </p>
             {{/if}}
             {{/each}}
           </div>
@@ -44,12 +46,11 @@
     <div class="card-header">
       Make a Burger
     </div>
-    <div class="card-body">
-      <form class="makeBurger"></form>
-      <label>What Burger Would You Like To Make?</label>
-      <input type="text" id="burger_name"><br>
-      <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
+    <form class="create-burger">
+      <div class="form-group">
+        <label for="burger">Burger Name:</label>
+        <input type="text" id="burger" name="name">
+      </div>
+      <button type="submit">Add Burger</button>
   </div>
 </div>

@@ -2,7 +2,7 @@ var connection = require("../config/connection");
 
 var orm = {
   selectAll: function (tableInput, cb) {
-    var queryString = "SELECT * FROM ??";
+    var queryString = "SELECT * FROM burgers";
     connection.query(queryString, tableInput, function (err, result) {
       if (err) {
         throw err;
@@ -17,20 +17,23 @@ var orm = {
 
     connection.query(queryString, vals, function (err, result) {
       if (err) {
-        return res.status(500).end();
+        throw err;
       }
       cb(result);
     });
   },
-  updateOne: function (cb) {
-    var queryString = "UPDATE burgers SET devoured = true WHERE id = ?"
+  updateOne: function (tableName, objColVal, condition, cb) {
+    var queryString = "UPDATE" + tableName;
+    queryString += "SET";
+    queryString += objColVal;
+    queryString =+ "WHERE";
+    queryString =+ condition;
 
     console.log(queryString);
-    var id = req.params.id;
 
-    connection.query(queryString, id, function (err, result) {
+    connection.query(queryString, function (err, result) {
       if (err) {
-        return result.status(500).end();
+       throw err
       }
       cb(result);
     });
