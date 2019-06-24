@@ -7,4 +7,4 @@ This application has helped me understand how to utilize the model view controll
 # How to use it
 Make a burger you want to eat, and then DEVOUR it!
 
-[Deployed App](https://hidden-tundra-78563.herokuapp.com/survey)
+[Deployed App](https://sleepy-retreat-20892.herokuapp.com/)
